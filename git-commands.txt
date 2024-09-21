@@ -1,0 +1,34 @@
+GitHub: Learn what matters 🚀
+
+This includes all git useful commands that are frequently used.
+
+1. Configuration
+    git config --global user.name "Your name" // Set the name for commits.
+    git config --global user.email "you@example.com" // Set the email for commits.
+
+2. Repository Creation
+    git init // Initialize a new Git repository.
+    git clone "repository url" // clone an existing repository.
+
+3. Basic commands
+    git add 'filename' // Stage changes for the next commit.
+    git commit -m "message" // Commit staged changes with a message.
+    git status // Show the status of changes.
+    
+4. Branching and Merging
+    git branch // List branches.
+    git branch "branch-name" // Create a new branch.
+    git checkout "branch-name" // Switch to a branch.
+    git merge "branch-name" // Merge a branch into the current branch.
+
+5. Remote Repositories
+    git remote // Show remote connections.
+    git remote add <name> "url" // Add a remote repository.
+    git fetch <remote> // Fetch changes from a remote repository.
+    git pull <remote> <branch> // Fetch and merge changes from a remote branch.
+    git push <remote> <branch> // Push local changes to a remote branch.
+
+6. Undoing Changes
+    git reset <file> // Show remote connections.
+    git checkout -- <file> // Discard changes in working directory.
+    git git revert <commit> // Create a new commit that undoes changes from a previous commit.
