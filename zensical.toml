@@ -1,0 +1,118 @@
+[project]
+site_name = "gitcraft"
+version = "0.1.0"
+site_description = ""
+site_author = "Saqib Bedar"
+docs_dir = "docs"
+site_dir = "site"
+repo_name = "gitcraft"
+repo = "fontawesome/brands/github"
+repo_url = "https://github.com/saqibbedar/gitcraft"
+edit_uri = "edit/main/docs/"
+copyright = "Copyright &copy; 2026 <a href='https://saqibbedar.github.io' target='_blank' style='text-decoration: none;'>Saqib Bedar</a>. All rights reserved."
+
+nav = [
+    { "Home" = "index.md" },
+    { "About" = "about.md" },
+    { "Learn" = [
+        { "Get Started" = ["get-started/installation.md", "get-started/configuration.md"] },
+    ]}
+]
+
+# Instant navigation feature for the theme
+[project.theme]
+logo = "images/logo.png"
+favicon = "images/logo.png"
+features = [
+  # navigation
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.instant.progress",
+  "navigation.tracking",
+  "navigation.tabs",
+  "navigation.sections",
+  "navigation.path",
+  "navigation.top",
+  "navigation.footer",
+  
+  # table of contents
+  "toc.follow",
+  "toc.follow",
+
+  # content actions
+  "content.action.edit", # Edit this page
+  "content.action.view", # View source of this page
+
+  # Code block features
+  "content.code.copy",
+  "content.code.select",
+  "content.code.annotate",
+
+  # content tabs
+  "content.tabs.link",
+]
+
+# Palette toggle for automatic mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.extra]
+homepage = "https://saqibbedar.github.io/gitcraft"
+
+[project.extra.tags]
+HTML5 = "html"
+JavaScript = "js"
+CSS = "css"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/x-twitter"
+link = "https://x.com/saqibbedar"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/saqibbedar"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/linkedin"
+link = "https://linkedin.com/in/saqibbedar"
+
+# Authoring configuration for the project
+[project.extra.status]
+new = "Recently added"
+deprecated = "Deprecated"
+[project.markdown_extensions]
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.superfences = {}
+tables = {}
+footnotes = {}
+pymdownx.caret = {}
+pymdownx.keys = {}
+pymdownx.mark = {}
+pymdownx.tilde = {}
+attr_list = {}
+md_in_html = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.blocks.caption = {}
+def_list = {}
+pymdownx.tasklist.custom_checkbox = true
