@@ -1,0 +1,11 @@
+[release]
+name = "gitcraft"
+title = "gitcraft {tag}"
+description = "A practical, readable Git reference for everyday workflows and long-term mastery."
+changelog = "CHANGELOG.md"
+changelog_anchor = "https://github.com/saqibbedar/gitcraft/blob/main/CHANGELOG.md#release-{tag}"
+
+[release.github]
+generate_notes = true
+draft = false
+prerelease = false

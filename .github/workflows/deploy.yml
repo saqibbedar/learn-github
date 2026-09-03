@@ -3,11 +3,11 @@ name: Deploy Gitcraft documentation
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -56,3 +56,67 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release commit
+        uses: actions/checkout@v4
+
+      - name: Read release metadata
+        id: metadata
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import os
+          import tomllib
+
+          tag = os.environ["TAG_NAME"]
+          with open(".github/release.toml", "rb") as file:
+              config = tomllib.load(file)
+          release = config["release"]
+          github = release.get("github", {})
+
+          title = release["title"].replace("{tag}", tag)
+          description = release["description"]
+          changelog = release["changelog_anchor"].replace("{tag}", tag)
+          generate_notes = github.get("generate_notes", True)
+          draft = github.get("draft", False)
+          prerelease = github.get("prerelease", False)
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"title={title}\n")
+              output.write(f"description={description}\n")
+              output.write(f"changelog={changelog}\n")
+              output.write(f"generate_notes={'true' if generate_notes else 'false'}\n")
+              output.write(f"draft={'true' if draft else 'false'}\n")
+              output.write(f"prerelease={'true' if prerelease else 'false'}\n")
+          PY
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.ref_name }}
+          RELEASE_TITLE: ${{ steps.metadata.outputs.title }}
+          RELEASE_DESCRIPTION: ${{ steps.metadata.outputs.description }}
+          CHANGELOG_URL: ${{ steps.metadata.outputs.changelog }}
+          GENERATE_NOTES: ${{ steps.metadata.outputs.generate_notes }}
+          DRAFT: ${{ steps.metadata.outputs.draft }}
+          PRERELEASE: ${{ steps.metadata.outputs.prerelease }}
+        run: |
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Release $TAG_NAME already exists; leaving it unchanged."
+            exit 0
+          fi
+
+          RELEASE_NOTES="$(printf '%s\n\n[Read the changelog](%s).\n' "$RELEASE_DESCRIPTION" "$CHANGELOG_URL")"
+
+          FLAGS=(--title "$RELEASE_TITLE" --notes "$RELEASE_NOTES")
+          [ "$GENERATE_NOTES" = "true" ] && FLAGS+=(--generate-notes)
+          [ "$DRAFT" = "true" ] && FLAGS+=(--draft)
+          [ "$PRERELEASE" = "true" ] && FLAGS+=(--prerelease)
+
+          gh release create "$TAG_NAME" "${FLAGS[@]}"
