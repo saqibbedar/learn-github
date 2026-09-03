@@ -1,0 +1,23 @@
+:root > * {
+  --md-primary-fg-color: #f05133;
+  --md-primary-fg-color--light: #ff8066;
+  --md-primary-fg-color--dark: #c9361d;
+
+  --md-accent-fg-color: #f05133;
+  --md-accent-fg-color--transparent: rgb(240 81 51 / 0.15);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #f05133;
+  --md-primary-fg-color--light: #ff8066;
+  --md-primary-fg-color--dark: #c9361d;
+
+  --md-accent-fg-color: #ff8066;
+  --md-accent-fg-color--transparent: rgb(255 128 102 / 0.15);
+}
+
+.homepage-banner {
+  border-radius: 18px;
+  display: block;
+  margin: auto;
+}

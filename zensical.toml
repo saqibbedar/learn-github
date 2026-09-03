@@ -1,7 +1,8 @@
 [project]
 site_name = "gitcraft"
 version = "0.1.0"
-site_description = ""
+site_description = "A practical, readable Git reference for everyday workflows and long-term mastery."
+site_url = "https://saqibbedar.github.io/gitcraft/"
 site_author = "Saqib Bedar"
 docs_dir = "docs"
 site_dir = "site"
@@ -9,14 +10,71 @@ repo_name = "gitcraft"
 repo = "fontawesome/brands/github"
 repo_url = "https://github.com/saqibbedar/gitcraft"
 edit_uri = "edit/main/docs/"
-copyright = "Copyright &copy; 2026 <a href='https://saqibbedar.github.io' target='_blank' style='text-decoration: none;'>Saqib Bedar</a>. All rights reserved."
+copyright = "Gitcraft is a practical learning repository for Git workflows, maintained by <a href='https://saqibbedar.github.io' target='_blank' style='text-decoration: none; font-weight: bold;'>Saqib Bedar</a>."
+
+extra_css = [
+  "stylesheets/extra.css",
+]
 
 nav = [
     { "Home" = "index.md" },
+
+    { "Guide" = [
+        { "Getting Started" = [
+            "get-started/git-vs-github.md",
+            "get-started/installation.md",
+            "get-started/configuration.md",
+            "get-started/git-basic-commands.md",
+            "get-started/update-origin.md",
+        ] },
+    ] },
+
+    { "Reference" = [
+        { "Core Git" = [
+            "core-git/index.md",
+            "core-git/working-tree-to-commit.md",
+            "core-git/commits-and-history.md",
+        ] },
+        { "Branches" = [
+            "branches/index.md",
+            "branches/branch-model.md",
+            "branches/create-and-switch.md",
+            "branches/compare.md",
+            "branches/merge.md",
+            "branches/rebase-and-sync.md",
+            "branches/delete-and-restore.md",
+            "branches/archive-on-backup.md",
+        ] },
+        { "Stash" = [
+            "stash/index.md",
+            "stash/git-stash.md",
+            "stash/branch-and-stash.md",
+        ] },
+        { "Remotes" = [
+            "remotes/index.md",
+            "remotes/fetch-pull-push.md",
+            "remotes/origin-and-upstream.md",
+        ] },
+        { "Undo and Recovery" = [
+            "undo-recovery/index.md",
+            "undo-recovery/restore-reset-revert.md",
+            "undo-recovery/reflog.md",
+        ] },
+        { "Repository Practices" = [
+            "repository/gitignore.md",
+            "repository/tags.md",
+            "repository/git-lfs.md",
+        ] },
+        { "Collaboration" = [
+            "collaboration/conventional-commits.md",
+            "collaboration/pull-requests.md",
+        ] },
+        { "Open Source" = [
+            "opensrc-workflow/index.md",
+        ] },
+    ] },
+
     { "About" = "about.md" },
-    { "Learn" = [
-        { "Get Started" = ["get-started/installation.md", "get-started/configuration.md"] },
-    ]}
 ]
 
 # Instant navigation feature for the theme
@@ -30,18 +88,12 @@ features = [
   "navigation.instant.progress",
   "navigation.tracking",
   "navigation.tabs",
-  "navigation.sections",
   "navigation.path",
   "navigation.top",
   "navigation.footer",
   
   # table of contents
   "toc.follow",
-  "toc.follow",
-
-  # content actions
-  "content.action.edit", # Edit this page
-  "content.action.view", # View source of this page
 
   # Code block features
   "content.code.copy",
@@ -52,14 +104,17 @@ features = [
   "content.tabs.link",
 ]
 
+
 # Palette toggle for automatic mode
 [[project.theme.palette]]
+primary = "custom"
 media = "(prefers-color-scheme)"
 toggle.icon = "lucide/sun-moon"
 toggle.name = "Switch to light mode"
 
 # Palette toggle for light mode
 [[project.theme.palette]]
+primary = "custom"
 media = "(prefers-color-scheme: light)"
 scheme = "default"
 toggle.icon = "lucide/sun"
@@ -67,6 +122,7 @@ toggle.name = "Switch to dark mode"
 
 # Palette toggle for dark mode
 [[project.theme.palette]]
+primary = "custom"
 media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 toggle.icon = "lucide/moon"
@@ -75,10 +131,21 @@ toggle.name = "Switch to system preference"
 [project.extra]
 homepage = "https://saqibbedar.github.io/gitcraft"
 
+[project.plugins.tags]
+
 [project.extra.tags]
-HTML5 = "html"
-JavaScript = "js"
-CSS = "css"
+Git = "git"
+GitHub = "github"
+Command = "command"
+Guide = "guide"
+Branch = "branch"
+Stash = "stash"
+Reference = "reference"
+Remote = "remote"
+Recovery = "recovery"
+Repository = "repository"
+Collaboration = "collaboration"
+GitLFS = "git-lfs"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/x-twitter"
@@ -102,7 +169,14 @@ pymdownx.highlight.line_spans = "__span"
 pymdownx.highlight.pygments_lang_class = true
 pymdownx.inlinehilite = {}
 pymdownx.snippets = {}
-pymdownx.superfences = {}
+pymdownx.superfences.custom_fences = [
+    { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.slugify.object = "pymdownx.slugs.slugify"
+pymdownx.tabbed.slugify.kwds.case = "lower"
+admonition = {}
+pymdownx.details = {}
 tables = {}
 footnotes = {}
 pymdownx.caret = {}
