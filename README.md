@@ -6,7 +6,7 @@
 	<a href="https://github.com/saqibbedar/gitcraft/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/saqibbedar/gitcraft/deploy.yml?branch=main&style=flat-square&label=build" alt="Build status" /></a>
 	<a href="https://github.com/saqibbedar/gitcraft/blob/main/LICENSE"><img src="https://img.shields.io/github/license/saqibbedar/gitcraft?style=flat-square" alt="License" /></a>
 	<a href="https://github.com/saqibbedar/gitcraft"><img src="https://img.shields.io/github/stars/saqibbedar/gitcraft?style=flat-square" alt="GitHub stars" /></a>
-	<a href="https://github.com/saqibbedar/gitcraft"><img src="https://www.codetriage.com/saqibbedar/gitcraft/badges/users.svg" alt="Code helpers" /></a>
+	<a href="https://github.com/saqibbedar/gitcraft/issues"><img src="https://www.codetriage.com/saqibbedar/gitcraft/badges/users.svg" alt="Code helpers" /></a>
 </p>
 
 # Gitcraft
